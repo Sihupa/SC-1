@@ -8,7 +8,7 @@ For installing SC-1, clone this repository and run:
 
 Command format:
 
-    python3 run_sc1.py [-h] [--mem-size BYTES] [--entry ADDR] [--max-steps N] [--mem-u16 ADDR] [--pygame] [--storage-dir DIR] program
+    python3 run-sc1.py [-h] [--mem-size BYTES] [--entry ADDR] [--max-steps N] [--mem-u16 ADDR] [--pygame] [--storage-dir DIR] program
 
 ## Copyirght and License
 Copyright (c) 2026 Erdem Ersoy (eersoy93)
