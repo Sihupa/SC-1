@@ -1,8 +1,11 @@
 # Example: disk_write_demo
-# Goal: write storage/hello.txt with content "HELLO\n" via INT disk I/O, then print WROTE=<count>.
+# Goal: write hello.txt with content "HELLO\n" via INT 16 (WRITE_FILE), then print WROTE=<count>.
 # Run:
 #   python3 run_sc1.py examples/disk_write_demo.sc1
 #   python3 run_sc1.py examples/disk_write_demo.sc1 --storage-dir storage
+# Expected:
+#   - storage/hello.txt contains "HELLO\n"
+#   - stdout includes: WROTE=6
 #
 # Disk INTs:
 #   INT 16: WRITE_FILE

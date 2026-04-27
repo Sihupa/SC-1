@@ -1,5 +1,5 @@
 # Example: counter
-# Goal: ACC <- 0; add 1 ten times; store result to mem[0x0200] (u16); HALT.
+# Goal: start from ACC=0, add 1 ten times, store result in mem[0x0200] (u16), then HALT.
 # Run:
 #   python3 run_sc1.py examples/counter.sc1 --mem-u16 0x0200
 # Expected:

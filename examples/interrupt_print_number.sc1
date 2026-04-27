@@ -1,7 +1,9 @@
 # Example: interrupt_print_number
-# Goal: print "SUM=" and then 55 using INT.
+# Goal: print "SUM=" and then decimal value 55 via interrupts.
 # Run:
 #   python3 run_sc1.py examples/interrupt_print_number.sc1
+# Expected:
+#   SUM=55
 #
 # INT IDs used:
 #   1: putc (prints chr(ACC & 0xFF))

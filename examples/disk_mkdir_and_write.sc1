@@ -1,7 +1,11 @@
 # Example: disk_mkdir_and_write
-# Goal: create storage/logs/ via INT 18 (MKDIR), then write storage/logs/hello.txt via INT 16.
+# Goal: create logs/ via INT 18 (MKDIR), then write logs/hello.txt via INT 16 (WRITE_FILE).
 # Run:
 #   python3 run_sc1.py examples/disk_mkdir_and_write.sc1
+# Expected:
+#   - storage/logs directory exists
+#   - storage/logs/hello.txt contains "HI\n"
+#   - Program prints "OK" if write status == 0
 #
 # Disk INTs:
 #   INT 18: MKDIR

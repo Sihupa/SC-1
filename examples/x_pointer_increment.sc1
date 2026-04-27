@@ -3,6 +3,8 @@
 # Effect: writes three consecutive u16 words at 0x0200: 10, 20, 30.
 # Run:
 #   python3 run_sc1.py examples/x_pointer_increment.sc1 --mem-u16 0x0200 --mem-u16 0x0202 --mem-u16 0x0204
+# Expected:
+#   mem[0x0200] == 10, mem[0x0202] == 20, mem[0x0204] == 30
 
 # X = 0x0200
 9 0 2

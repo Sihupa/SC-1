@@ -1,8 +1,10 @@
 # Example: interrupt_hello
-# Goal: print "HELLO" via INT.
+# Goal: print "HELLO" and newline via software interrupts.
 # Run:
 #   python3 run_sc1.py examples/interrupt_hello.sc1
 #   python3 run_sc1.py examples/interrupt_hello.sc1 --pygame
+# Expected:
+#   HELLO
 #
 # INT IDs used:
 #   1: putc (prints chr(ACC & 0xFF))
