@@ -81,7 +81,7 @@ class PygameTextConsole:
 
     width: int = 800
     height: int = 600
-    font_size: int = 20
+    font_size: int = 36
     fg: tuple[int, int, int] = (230, 230, 230)
     bg: tuple[int, int, int] = (20, 20, 20)
     title: str = "SC-1 Screen"
