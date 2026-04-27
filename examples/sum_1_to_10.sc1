@@ -1,0 +1,48 @@
+# Example: sum_1_to_10
+# Goal: compute 1+2+...+10 and store to mem[0x0100] (u16).
+# Run:
+#   python3 run_sc1.py examples/sum_1_to_10.sc1 --mem-u16 0x0100
+# Expected:
+#   mem[0x0100] == 55
+#
+# Data layout:
+#   sum  @ 0x0100
+#   i    @ 0x0102
+#   end  @ 0x0104  (11; loop stops when i-end == 0)
+
+# sum = 0
+1 0 0
+3 0 1
+
+# i = 1
+1 1 0
+3 2 1
+
+# end = 11
+1 11 0
+3 4 1
+
+# loop:
+# ACC = sum
+2 0 1
+# ACC += i
+23 2 1
+# sum = ACC
+3 0 1
+
+# ACC = i
+2 2 1
+# ACC += 1
+4 1 0
+# i = ACC
+3 2 1
+
+# ACC = i
+2 2 1
+# ACC -= end
+24 4 1
+# if ACC != 0 jump to loop (address 0x0012)
+14 18 0
+
+# HALT
+15

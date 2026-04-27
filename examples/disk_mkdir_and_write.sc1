@@ -1,0 +1,80 @@
+# Example: disk_mkdir_and_write
+# Goal: create storage/logs/ via INT 18 (MKDIR), then write storage/logs/hello.txt via INT 16.
+# Run:
+#   python3 run_sc1.py examples/disk_mkdir_and_write.sc1
+#
+# Disk INTs:
+#   INT 18: MKDIR
+#   INT 16: WRITE_FILE
+#
+# IOCB:
+#   0x00F0 path_ptr (u16) -> C-string (UTF-8)
+#   0x00F2 buf_ptr  (u16)
+#   0x00F4 len      (u16)
+#   0x00F6 status   (u16)
+#   0x00F8 count    (u16)
+#
+# Prints: "OK\n" if status==0 after write.
+
+# Path1 = "logs\0" at 0x0300
+1 108 111      # 'l''o'
+3 0 3
+1 103 115      # 'g''s'
+3 2 3
+1 0 0          # '\0''\0'
+3 4 3
+
+# IOCB.path_ptr = 0x0300
+1 0 3
+3 240 0
+# INT 18 (MKDIR)
+48 18
+
+# Path2 = "logs/hello.txt\0" at 0x0310
+1 108 111      # l o
+3 16 3
+1 103 115      # g s
+3 18 3
+1 47 104       # / h
+3 20 3
+1 101 108      # e l
+3 22 3
+1 108 111      # l o
+3 24 3
+1 46 116       # . t
+3 26 3
+1 120 116      # x t
+3 28 3
+1 0 0          # \0
+3 30 3
+
+# Buffer = "HI\n" at 0x0330
+1 72 73
+3 48 3
+1 10 0
+3 50 3
+
+# IOCB.path_ptr = 0x0310
+1 16 3
+3 240 0
+# IOCB.buf_ptr = 0x0330
+1 48 3
+3 242 0
+# IOCB.len = 3
+1 3 0
+3 244 0
+
+# INT 16 (WRITE_FILE)
+48 16
+
+# If IOCB.status == 0, print "OK\n"
+2 246 0        # ACC = status
+14 86 0        # if status != 0, jump to HALT (addr 0x0056)
+
+1 79 0
+48 1
+1 75 0
+48 1
+48 3
+
+15

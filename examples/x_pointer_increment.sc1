@@ -1,0 +1,25 @@
+# Example: x_pointer_increment
+# Goal: demonstrate pointer arithmetic and indirect memory access via X.
+# Effect: writes three consecutive u16 words at 0x0200: 10, 20, 30.
+# Run:
+#   python3 run_sc1.py examples/x_pointer_increment.sc1 --mem-u16 0x0200 --mem-u16 0x0202 --mem-u16 0x0204
+
+# X = 0x0200
+9 0 2
+
+# ACC = 10; mem[X] = ACC; X += 2
+1 10 0
+11
+18 2 0
+
+# ACC = 20; mem[X] = ACC; X += 2
+1 20 0
+11
+18 2 0
+
+# ACC = 30; mem[X] = ACC; X += 2
+1 30 0
+11
+18 2 0
+
+15

@@ -1,0 +1,20 @@
+# Example: counter
+# Goal: ACC <- 0; add 1 ten times; store result to mem[0x0200] (u16); HALT.
+# Run:
+#   python3 run_sc1.py examples/counter.sc1 --mem-u16 0x0200
+# Expected:
+#   mem[0x0200] == 10
+
+1 0 0
+4 1 0
+4 1 0
+4 1 0
+4 1 0
+4 1 0
+4 1 0
+4 1 0
+4 1 0
+4 1 0
+4 1 0
+3 0 2
+15

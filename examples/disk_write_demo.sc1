@@ -1,0 +1,72 @@
+# Example: disk_write_demo
+# Goal: write storage/hello.txt with content "HELLO\n" via INT disk I/O, then print WROTE=<count>.
+# Run:
+#   python3 run_sc1.py examples/disk_write_demo.sc1
+#   python3 run_sc1.py examples/disk_write_demo.sc1 --storage-dir storage
+#
+# Disk INTs:
+#   INT 16: WRITE_FILE
+#
+# IOCB (I/O control block) in memory:
+#   0x00F0 path_ptr (u16)
+#   0x00F2 buf_ptr  (u16)
+#   0x00F4 len      (u16)
+#   0x00F6 status   (u16)
+#   0x00F8 count    (u16)
+#
+# Data layout:
+#   path @ 0x0300  -> "hello.txt\0"
+#   buf  @ 0x0320  -> "HELLO\n"
+
+# Write path "hello.txt\0" (ASCII), 2 chars per word.
+1 104 101      # 'h''e'
+3 0 3
+1 108 108      # 'l''l'
+3 2 3
+1 111 46       # 'o''.'
+3 4 3
+1 116 120      # 't''x'
+3 6 3
+1 116 0        # 't''\0'
+3 8 3
+
+# Write buffer "HELLO\n"
+1 72 69        # 'H''E'
+3 32 3
+1 76 76        # 'L''L'
+3 34 3
+1 79 10        # 'O''\n'
+3 36 3
+
+# IOCB.path_ptr = 0x0300
+1 0 3
+3 240 0
+# IOCB.buf_ptr = 0x0320
+1 32 3
+3 242 0
+# IOCB.len = 6
+1 6 0
+3 244 0
+
+# INT 16 (WRITE_FILE)
+48 16
+
+# Print "WROTE="
+1 87 0
+48 1
+1 82 0
+48 1
+1 79 0
+48 1
+1 84 0
+48 1
+1 69 0
+48 1
+1 61 0
+48 1
+
+# Load IOCB.count into ACC and print decimal
+2 248 0
+48 2
+48 3
+15
