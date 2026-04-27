@@ -1,5 +1,5 @@
 # SC-1
-SC-1 is an experimental, minimal virtual computer architecture and its own emulator.
+SC-1 is an experimental, minimal virtual computer architecture and its own emulator. It's executable ROM files consist numbers (0-255) and not be runned comments.
 
 ## Installation and Usage
 For installing SC-1, clone this repository and run:
